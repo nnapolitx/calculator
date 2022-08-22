@@ -87,6 +87,11 @@ operatorButton.forEach(index => {
             let newOperator = '';
             newOperator = e.target.classList[0];
             console.log(newOperator);
+            const chainAnswer = operate(currentVarA, currentOperator, currentVarB);
+            CalculatorDisplay.textContent = chainAnswer;
+            currentOperator = newOperator;
+            currentVarA = chainAnswer;
+            currentVarB = '';
         }
     });
 });
@@ -98,3 +103,4 @@ equals.addEventListener('click', () => {
     currentVarB = '';
     currentOperator = '';
 });
+
