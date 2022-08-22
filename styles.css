@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+nav {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.calcBody {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    justify-content: center;
+    background-color: grey;
+}
+
+.display {
+    width: 95%;
+    text-align: end;
+    border: 1px solid black;
+    margin: .5rem;
+    background-color: green;
+}
+
+
+
