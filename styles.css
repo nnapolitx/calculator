@@ -7,6 +7,7 @@ body {
 nav {
     text-align: center;
     font-size: 3rem;
+    margin-bottom: 2rem;
 }
 
 .container {
@@ -54,3 +55,11 @@ button {
     border: 1px solid black;
     border-radius: 4px;
 }
+
+/*.clear, .posNeg, .percent, .divide, .multiply, .minus, .plus, .power, .decimal {
+    background-color: darkseagreen;
+}
+
+.equals {
+    background-color: orange;
+} Will play with colors later*/ 
