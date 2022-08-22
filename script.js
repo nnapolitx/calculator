@@ -51,18 +51,33 @@ const decimal = document.querySelector('.decimal');
 const equals = document.querySelector('.equals');
 
 //selecting and assigning number buttons
-const one = document.querySelector('.one');
-const two = document.querySelector('.two');
-const three = document.querySelector('.three');
-const four = document.querySelector('.four');
-const five = document.querySelector('.five');
-const six = document.querySelector('.six');
-const seven = document.querySelector('.seven');
-const eight = document.querySelector('.eight');
-const nine = document.querySelector('.nine');
-const zero = document.querySelector('.zero');
+const numberButton = document.querySelectorAll('.number');
+//const two = document.querySelector('.two');
+//const three = document.querySelector('.three');
+//const four = document.querySelector('.four');
+//const five = document.querySelector('.five');
+//const six = document.querySelector('.six');
+//const seven = document.querySelector('.seven');
+//const eight = document.querySelector('.eight');
+//const nine = document.querySelector('.nine');
+//const zero = document.querySelector('.zero');
 
 //populate display and store value for operator function
 const CalculatorDisplay = document.querySelector('.display');
+
+let currentVarA = '';
+let currentVarB = '';
+
+numberButton.forEach(index => {
+    index.addEventListener('click', (e) => {
+        console.log(e.target.innerText);
+        currentVarA += e.target.innerText;
+    })
+})
+
+//numBtnArr.addEventListener('click', function(i) {
+//    currentVarA += one.innerText;
+//    CalculatorDisplay.textContent = `${currentVarA}`;
+//});
 
 
