@@ -35,23 +35,24 @@ function powerOfInt (a, b) {
 
 //Function that is called with user input
 function operate(a, operator, b) {
-    return operator(a,b);
+    a=Number(a);
+    b=Number(b);
+    let fn = window[operator];
+    return fn(a,b);
 }
 
-//selecting and assigning operator buttons
-//const clear = document.querySelector('.clear');
-//const negativeNumber = document.querySelector('.posNeg');
-//const percent = document.querySelector('.percent');
-//const divide = document.querySelector('.divide');
-//const multiply = document.querySelector('.multiply');
-//const minus = document.querySelector('.minus');
-//const plus = document.querySelector('.plus');
-//const power = document.querySelector('.power');
-//const decimal = document.querySelector('.decimal');
-//const equals = document.querySelector('.equals');
+//selecting and assigning non-operator buttons
+const clear = document.querySelector('.clear');
+const decimal = document.querySelector('.decimal');
+const equals = document.querySelector('.equals');
+const percent = document.querySelector('.percent')
+const posNeg = document.querySelector('.posNeg')
 
 //selecting and assigning number buttons
 const numberButton = document.querySelectorAll('.number');
+
+//Selecting and assigning operator buttons
+const operatorButton = document.querySelectorAll('.operator');
 
 //populate display and store value for operator function
 const CalculatorDisplay = document.querySelector('.display');
@@ -59,16 +60,15 @@ const CalculatorDisplay = document.querySelector('.display');
 let currentVarA = '';
 let currentVarB = '';
 let currentOperator = '';
-let newOperator ='';
 
 numberButton.forEach(index => {
     index.addEventListener('click', (e) => {
-        if (currentOperator.length<1){
+        if (currentOperator === ''){
         console.log(e.target.innerText);
         currentVarA += e.target.innerText;
         CalculatorDisplay.textContent = currentVarA;
         }
-        else if (currentOperator.length>1){
+        else if (currentOperator !== ''){
             console.log(e.target.innerText);
             currentVarB += e.target.innerText;
             CalculatorDisplay.textContent = currentVarB;
@@ -76,3 +76,25 @@ numberButton.forEach(index => {
     });
 });
 
+operatorButton.forEach(index => {
+    index.addEventListener('click', (e) => {
+        if (currentOperator === '') {
+            console.log(e.target.classList[0]);
+            currentOperator = e.target.classList[0];
+        }
+        else if (currentOperator !== '') {
+            console.log(currentOperator);
+            let newOperator = '';
+            newOperator = e.target.classList[0];
+            console.log(newOperator);
+        }
+    });
+});
+
+equals.addEventListener('click', () => {
+    const answer = operate(currentVarA, currentOperator, currentVarB);
+    CalculatorDisplay.textContent = answer;
+    currentVarA = '';
+    currentVarB = '';
+    currentOperator = '';
+});
