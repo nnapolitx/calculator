@@ -33,3 +33,7 @@ function powerOfInt (a, b) {
     return power;
 }
 
+//Function that is called with user input
+function operate(a, operator, b) {
+    return operator(a,b);
+}
