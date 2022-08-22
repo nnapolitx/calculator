@@ -104,3 +104,9 @@ equals.addEventListener('click', () => {
     currentOperator = '';
 });
 
+clear.addEventListener('click', () => {
+    CalculatorDisplay.textContent = '';
+    currentVarA = '';
+    currentVarB = '';
+    currentOperator = '';
+});
