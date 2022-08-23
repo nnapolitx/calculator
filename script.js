@@ -64,12 +64,10 @@ let currentOperator = '';
 numberButton.forEach(index => {
     index.addEventListener('click', (e) => {
         if (currentOperator === ''){
-            console.log(e.target.innerText);
             currentVarA += e.target.innerText;
             CalculatorDisplay.textContent = currentVarA;
         }
         else if (currentOperator !== ''){
-            console.log(e.target.innerText);
             currentVarB += e.target.innerText;
             CalculatorDisplay.textContent = currentVarB;
         }
@@ -81,22 +79,18 @@ numberButton.forEach(index => {
 operatorButton.forEach(index => {
     index.addEventListener('click', (e) => {
         if (currentOperator === '' && currentVarA === '') {
-            console.log(CalculatorDisplay.textContent, 'chaining answer');
             currentVarA = CalculatorDisplay.textContent;
             currentOperator = e.target.classList[0];
         }
         else if (currentOperator === '') {
-            console.log(e.target.classList[0]);
             currentOperator = e.target.classList[0];
 
             document.querySelector('.percent').disabled = false;
             document.querySelector('.decimal').disabled = false;
         }
         else if (currentOperator !== '') {
-            console.log(currentOperator);
             let newOperator = '';
             newOperator = e.target.classList[0];
-            console.log(newOperator);
             const chainAnswer = operate(currentVarA, currentOperator, currentVarB);
             CalculatorDisplay.textContent = chainAnswer;
             currentOperator = newOperator;
