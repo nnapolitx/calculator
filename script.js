@@ -121,7 +121,7 @@ equals.addEventListener('click', () => {
     //trying to display a number less than 11 digits here
     let text = answer.toString();
     if (text.length>10) {
-        CalculatorDisplay.textContent = answer; //soon to include the round function
+        CalculatorDisplay.textContent = cutOffRound(answer);
     } else {
         CalculatorDisplay.textContent = answer;
     }
@@ -219,18 +219,20 @@ document.addEventListener('keypress', (event) => {
 
 function cutOffRound (answer) {
     if (answer%1 === 0) {
+        let text = answer.toString();
         let i=text.length-2;
-        console.log(i);
         let deca = 10;
         while (i>0){
             deca *=10;
             i--;
         }
         console.log(deca);
-        let newAnswer;
-        newAnswer = answer/deca;
-        console.log(sum)
-        CalculatorDisplay.textContent = `${newAnswer}e^${text.length-1}`;
+        let newAnswer = answer/deca;
+        let newText = newAnswer.toString();
+        let chop = newText.slice(0,6);
+        let e = `${chop}e^${text.length-1}`;
+        return e;
+        
     }
     else { //if the answer includes a really long decimal, simply cuts it off
         let str = answer.toString();
