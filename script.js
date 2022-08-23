@@ -216,9 +216,8 @@ document.addEventListener('keypress', (event) => {
 
 
 // Adding a function down here to take care of answers with more than 11 digits =>
-function roundNumber(answer) {
-    let text =answer.toString();
 
+function cutOffRound (answer) {
     if (answer%1 === 0) {
         let i=text.length-2;
         console.log(i);
@@ -233,21 +232,9 @@ function roundNumber(answer) {
         console.log(sum)
         CalculatorDisplay.textContent = `${newAnswer}e^${text.length-1}`;
     }
-    else {
-        let temp = answer%1 //decimal num
-        let decimalLeng = temp.toString(); //length of the decimal
-        temp = decimalLeng.slice(0, 3);
-        let decimal = Number(temp);
-        //Separated the decimal and shortened it
-
-        let whole = answer-temp;
-        let wholeLeng = whole.toString();
-        let num = wholeLeng.length-2;
-        let ten = 10;
-        while (num>0) {
-            ten *=10;
-            i--;
-        }
-
+    else { //if the answer includes a really long decimal, simply cuts it off
+        let str = answer.toString();
+        let cutOff = answer.slice(0,11);
+        return cutOff;
     }
 }
