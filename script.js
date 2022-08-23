@@ -164,8 +164,33 @@ decimal.addEventListener('click', () => {
     }
 });
 
-window.addEventListener('keydown', function (e) {
-    const key = document.querySelector(`button[data-key = "${e.keyCode}"]`);
-    if (!key) return;
-    key.click();
+
+// Keyboard functionality taken from info on StackOverflow
+document.addEventListener('keypress', (event) => {
+    const allOperations = {
+        '+': 'plus',
+        '-': 'minus',
+        '/': 'divide',
+        '*': 'multiply',
+        '^': 'power',
+        '%': 'percent',
+    };
+
+    if (!Number.isNaN(+event.key) && event.key !== ' ') {
+        document.getElementById(`number-${event.key}`).click();
+      }   
+    else if (event.key === 'Delete' || event.key === 'c' || event.key === 'C') {
+        document.getElementById('clear').click();
+      }  
+    else if (event.key === '.') {
+        document.getElementById('decimal').click();
+      }
+    else if (event.key === '=' || event.key === 'Enter') {
+        document.getElementById('equal').click();
+      } else if (['+', '-', '*', '/', '^', '%'].includes(event.key)) {
+        document.getElementById(allOperations[event.key]).click();
+      } else {
+        console.log('Wrong key:', event.key);
+      }
+
 });
