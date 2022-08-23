@@ -63,11 +63,15 @@ let currentOperator = '';
 
 numberButton.forEach(index => {
     index.addEventListener('click', (e) => {
-        
-        if (currentOperator === ''){
-        console.log(e.target.innerText);
-        currentVarA += e.target.innerText;
-        CalculatorDisplay.textContent = currentVarA;
+        if (currentOperator === '' && currentVarA !== '') {
+            currentVarA = '';
+            currentVarA += e.target.innerText;
+            CalculatorDisplay.textContent = currentVarA;
+        }
+        else if (currentOperator === ''){
+            console.log(e.target.innerText);
+            currentVarA += e.target.innerText;
+            CalculatorDisplay.textContent = currentVarA;
         }
         else if (currentOperator !== ''){
             console.log(e.target.innerText);
