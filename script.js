@@ -17,7 +17,7 @@ function multiplication (a, b) {
 
 function division (a, b) {
     if (b === 0){
-        return 'Error, cannot divide by zero.'
+        return 'ERR: / by 0'
     }
     else{
         let product = a/b;
@@ -59,7 +59,7 @@ const CalculatorDisplay = document.querySelector('.display');
 
 let currentVarA = '';
 let currentVarB = '';
-let currentOperator = '';
+let currentOperator = ''
 
 numberButton.forEach(index => {
     index.addEventListener('click', (e) => {
@@ -164,3 +164,8 @@ decimal.addEventListener('click', () => {
     }
 });
 
+window.addEventListener('keydown', function (e) {
+    const key = document.querySelector(`button[data-key = "${e.keyCode}"]`);
+    if (!key) return;
+    key.click();
+});
