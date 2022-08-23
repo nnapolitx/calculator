@@ -64,12 +64,23 @@ let currentOperator = ''
 numberButton.forEach(index => {
     index.addEventListener('click', (e) => {
         if (currentOperator === ''){
-            currentVarA += e.target.innerText;
-            CalculatorDisplay.textContent = currentVarA;
+            if (currentVarA.length > 10){
+                CalculatorDisplay.textContent = currentVarA;
+                return currentVarA;
+            }else {
+                currentVarA += e.target.innerText;
+                CalculatorDisplay.textContent = currentVarA;
+            }
+            
         }
         else if (currentOperator !== ''){
-            currentVarB += e.target.innerText;
-            CalculatorDisplay.textContent = currentVarB;
+            if (currentVarB.length > 10){
+                CalculatorDisplay.textContent = currentVarB;
+                return currentVarB;
+            }else {
+                currentVarB += e.target.innerText;
+                CalculatorDisplay.textContent = currentVarB;
+            }
         }
     });
 });
@@ -165,7 +176,7 @@ decimal.addEventListener('click', () => {
 });
 
 
-// Keyboard functionality taken from info on StackOverflow
+// Keyboard functionality
 document.addEventListener('keypress', (event) => {
     const allOperations = {
         '+': 'plus',
@@ -178,19 +189,21 @@ document.addEventListener('keypress', (event) => {
 
     if (!Number.isNaN(+event.key) && event.key !== ' ') {
         document.getElementById(`number-${event.key}`).click();
-      }   
-    else if (event.key === 'Delete' || event.key === 'c' || event.key === 'C') {
+    }   
+    else if (event.key === 'Delete' || event.key === 'c' || event.key === 'Backspace') {
         document.getElementById('clear').click();
-      }  
+    }  
     else if (event.key === '.') {
         document.getElementById('decimal').click();
-      }
+    }
     else if (event.key === '=' || event.key === 'Enter') {
         document.getElementById('equal').click();
-      } else if (['+', '-', '*', '/', '^', '%'].includes(event.key)) {
+    }
+    else if (['+', '-', '*', '/', '^', '%'].includes(event.key)) {
         document.getElementById(allOperations[event.key]).click();
-      } else {
+    }
+    else {
         console.log('Wrong key:', event.key);
-      }
+    }
 
 });
