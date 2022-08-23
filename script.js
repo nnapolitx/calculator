@@ -88,7 +88,7 @@ operatorButton.forEach(index => {
         else if (currentOperator === '') {
             console.log(e.target.classList[0]);
             currentOperator = e.target.classList[0];
-            //document.querySelector('.percent').disabled = false;
+            document.querySelector('.percent').disabled = false;
 
         }
         else if (currentOperator !== '') {
@@ -101,6 +101,8 @@ operatorButton.forEach(index => {
             currentOperator = newOperator;
             currentVarA = chainAnswer;
             currentVarB = '';
+
+            document.querySelector('.percent').disabled = false;
         }
     });
 });
@@ -113,6 +115,8 @@ equals.addEventListener('click', () => {
     currentVarA = '';
     currentVarB = '';
     currentOperator = '';
+
+    document.querySelector('.percent').disabled = false;
 });
 
 //clear the display and all variables.
@@ -121,17 +125,20 @@ clear.addEventListener('click', () => {
     currentVarA = '';
     currentVarB = '';
     currentOperator = '';
+
+    document.querySelector('.percent').disabled = false;
 });
 
 percent.addEventListener('click', () => {
     if (currentOperator === '') {
         currentVarA = currentVarA/100;
         CalculatorDisplay.textContent = currentVarA;
-        //document.querySelector('.percent').disabled = true;
+        document.querySelector('.percent').disabled = true;
     }
     else if (currentOperator !== '') {
         currentVarB = currentVarB/100;
         CalculatorDisplay.textContent = currentVarB;
+        document.querySelector('.percent').disabled = true;
     }
 });
 
