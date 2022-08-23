@@ -20,10 +20,12 @@ nav {
     flex-direction: column;
     justify-content: flex-start;
     background-color: grey;
-    max-width: 350px;
-    height: 500px;
+    max-width: 450px;
+    height: 650px;
     border: 3px solid black;
     border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 15px hsl(0, 0%, 20%);
 }
 
 .display {
@@ -31,13 +33,15 @@ nav {
     border: 1px solid black;
     margin: .5rem;
     margin-top: 1rem;
-    background-color: green;
-    font-size: 2.5rem;
+    background-color: hsl(120, 100%, 25%);
+    font-size: 4rem;
     font-family: monospace;
-    height: 100px;
+    height: 125px;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    border: 2px solid black;
+    box-shadow: 0 6px hsl(0, 0%, 20%);
 }
 
 .buttons-container {
@@ -52,14 +56,47 @@ nav {
 button {
     font-size: 1.5rem;
     width: 25%;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 4px;
 }
 
-/*.clear, .posNeg, .percent, .divide, .multiply, .minus, .plus, .power, .decimal {
-    background-color: darkseagreen;
+.operator, .posNeg, .percent, .decimal {
+    background-color: hsl(120, 25%, 65%);
 }
 
-.equals {
-    background-color: orange;
-} Will play with colors later*/ 
+.equals, .clear {
+    background-color: hsl(39, 100%, 50%);
+}
+
+.number {
+    background-color: hsl(39, 100%, 80%);
+}
+
+button {
+    padding: 15px 25px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    
+    border-radius: 15px;
+    box-shadow: 0 9px hsl(0, 0%, 25%);
+  }
+  
+.operator:hover, .posNeg:hover, .percent:hover, .decimal:hover {
+    background-color: hsl(120, 25%, 40%)
+}
+
+.number:hover {
+    background-color: hsl(39, 100%, 65%);
+}
+
+.equals:hover, .clear:hover {
+    background-color:hsl(39, 100%, 45%);
+}
+
+button:active {
+    background-color: #3e8e41;
+    box-shadow: 0 0px;
+    transform: translateY(4px);
+  }
