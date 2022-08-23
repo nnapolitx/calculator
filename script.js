@@ -63,12 +63,7 @@ let currentOperator = '';
 
 numberButton.forEach(index => {
     index.addEventListener('click', (e) => {
-        if (currentOperator === '' && currentVarA !== '') {
-            currentVarA = '';
-            currentVarA += e.target.innerText;
-            CalculatorDisplay.textContent = currentVarA;
-        }
-        else if (currentOperator === ''){
+        if (currentOperator === ''){
             console.log(e.target.innerText);
             currentVarA += e.target.innerText;
             CalculatorDisplay.textContent = currentVarA;
@@ -85,9 +80,16 @@ numberButton.forEach(index => {
 
 operatorButton.forEach(index => {
     index.addEventListener('click', (e) => {
-        if (currentOperator === '') {
+        if (currentOperator === '' && currentVarA === '') {
+            console.log(CalculatorDisplay.textContent, 'chaining answer');
+            currentVarA = CalculatorDisplay.textContent;
+            currentOperator = e.target.classList[0];
+        }
+        else if (currentOperator === '') {
             console.log(e.target.classList[0]);
             currentOperator = e.target.classList[0];
+            //document.querySelector('.percent').disabled = false;
+
         }
         else if (currentOperator !== '') {
             console.log(currentOperator);
@@ -108,7 +110,7 @@ operatorButton.forEach(index => {
 equals.addEventListener('click', () => {
     const answer = operate(currentVarA, currentOperator, currentVarB);
     CalculatorDisplay.textContent = answer;
-    currentVarA = answer;
+    currentVarA = '';
     currentVarB = '';
     currentOperator = '';
 });
@@ -121,8 +123,17 @@ clear.addEventListener('click', () => {
     currentOperator = '';
 });
 
-//percent.addEventListener('click', () => {
-//    if (currentOperator === '') {
-//        
-//    }
-//});
+percent.addEventListener('click', () => {
+    if (currentOperator === '') {
+        currentVarA = currentVarA/100;
+        CalculatorDisplay.textContent = currentVarA;
+        //document.querySelector('.percent').disabled = true;
+    }
+    else if (currentOperator !== '') {
+        currentVarB = currentVarB/100;
+        CalculatorDisplay.textContent = currentVarB;
+    }
+});
+
+
+
