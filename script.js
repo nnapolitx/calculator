@@ -88,8 +88,9 @@ operatorButton.forEach(index => {
         else if (currentOperator === '') {
             console.log(e.target.classList[0]);
             currentOperator = e.target.classList[0];
-            document.querySelector('.percent').disabled = false;
 
+            document.querySelector('.percent').disabled = false;
+            document.querySelector('.decimal').disabled = false;
         }
         else if (currentOperator !== '') {
             console.log(currentOperator);
@@ -103,6 +104,7 @@ operatorButton.forEach(index => {
             currentVarB = '';
 
             document.querySelector('.percent').disabled = false;
+            document.querySelector('.decimal').disabled = false;
         }
     });
 });
@@ -117,6 +119,7 @@ equals.addEventListener('click', () => {
     currentOperator = '';
 
     document.querySelector('.percent').disabled = false;
+    document.querySelector('.decimal').disabled = false;
 });
 
 //clear the display and all variables.
@@ -127,6 +130,7 @@ clear.addEventListener('click', () => {
     currentOperator = '';
 
     document.querySelector('.percent').disabled = false;
+    document.querySelector('.decimal').disabled = false;
 });
 
 percent.addEventListener('click', () => {
@@ -142,5 +146,27 @@ percent.addEventListener('click', () => {
     }
 });
 
+posNeg.addEventListener('click', () => {
+    if (currentOperator === '') {
+        currentVarA = currentVarA - (currentVarA*2);
+        CalculatorDisplay.textContent = currentVarA;
+    }
+    else if (currentOperator !== '') {
+        currentVarB = currentVarB - (currentVarB*2)
+        CalculatorDisplay.textContent = currentVarB;
+    }
+});
 
+decimal.addEventListener('click', () => {
+    if (currentOperator === '') {
+        currentVarA += '.';
+        CalculatorDisplay.textContent = currentVarA;
+        document.querySelector('.decimal').disabled = true;
+    }
+    else if (currentOperator !== '') {
+        currentVarB += '.';
+        CalculatorDisplay.textContent = currentVarB;
+        document.querySelector('.decimal').disabled = true;
+    }
+});
 
