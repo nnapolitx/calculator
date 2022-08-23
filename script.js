@@ -63,6 +63,7 @@ let currentOperator = '';
 
 numberButton.forEach(index => {
     index.addEventListener('click', (e) => {
+        
         if (currentOperator === ''){
         console.log(e.target.innerText);
         currentVarA += e.target.innerText;
@@ -75,6 +76,8 @@ numberButton.forEach(index => {
         }
     });
 });
+//if the <currentOperator> is empty, user should be on the <a> variable, if not, the user should be on the <b> variable. 
+
 
 operatorButton.forEach(index => {
     index.addEventListener('click', (e) => {
@@ -95,18 +98,27 @@ operatorButton.forEach(index => {
         }
     });
 });
+//if the <currentOperator> variable is empty, store the target in this variable; if it already has an operator stored, store the clicked operator on <newOperator>, evaluate the variables and <currentOperator>, return the evaluation in the display, the <a> variable now stores the displayed value, <b> is empty and ready for input, and <currentOperator> receives clicked <newOperator> value. 
 
+//evaluate the function by invoking the operate function, and save the answer so it can be evaluated with another operation
 equals.addEventListener('click', () => {
     const answer = operate(currentVarA, currentOperator, currentVarB);
     CalculatorDisplay.textContent = answer;
-    currentVarA = '';
+    currentVarA = answer;
     currentVarB = '';
     currentOperator = '';
 });
 
+//clear the display and all variables.
 clear.addEventListener('click', () => {
     CalculatorDisplay.textContent = '';
     currentVarA = '';
     currentVarB = '';
     currentOperator = '';
 });
+
+//percent.addEventListener('click', () => {
+//    if (currentOperator === '') {
+//        
+//    }
+//});
