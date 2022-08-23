@@ -118,7 +118,13 @@ operatorButton.forEach(index => {
 //evaluate the function by invoking the operate function, and save the answer so it can be evaluated with another operation
 equals.addEventListener('click', () => {
     const answer = operate(currentVarA, currentOperator, currentVarB);
-    CalculatorDisplay.textContent = answer;
+    //trying to display a number less than 11 digits here
+    let text = answer.toString();
+    if (text.length>10) {
+        CalculatorDisplay.textContent = answer; //soon to include the round function
+    } else {
+        CalculatorDisplay.textContent = answer;
+    }
     currentVarA = '';
     currentVarB = '';
     currentOperator = '';
@@ -190,7 +196,7 @@ document.addEventListener('keypress', (event) => {
     if (!Number.isNaN(+event.key) && event.key !== ' ') {
         document.getElementById(`number-${event.key}`).click();
     }   
-    else if (event.key === 'Delete' || event.key === 'c' || event.key === 'Backspace') {
+    else if (event.key === 'Delete' || event.key === 'c') {
         document.getElementById('clear').click();
     }  
     else if (event.key === '.') {
@@ -207,3 +213,41 @@ document.addEventListener('keypress', (event) => {
     }
 
 });
+
+
+// Adding a function down here to take care of answers with more than 11 digits =>
+function roundNumber(answer) {
+    let text =answer.toString();
+
+    if (answer%1 === 0) {
+        let i=text.length-2;
+        console.log(i);
+        let deca = 10;
+        while (i>0){
+            deca *=10;
+            i--;
+        }
+        console.log(deca);
+        let newAnswer;
+        newAnswer = answer/deca;
+        console.log(sum)
+        CalculatorDisplay.textContent = `${newAnswer}e^${text.length-1}`;
+    }
+    else {
+        let temp = answer%1 //decimal num
+        let decimalLeng = temp.toString(); //length of the decimal
+        temp = decimalLeng.slice(0, 3);
+        let decimal = Number(temp);
+        //Separated the decimal and shortened it
+
+        let whole = answer-temp;
+        let wholeLeng = whole.toString();
+        let num = wholeLeng.length-2;
+        let ten = 10;
+        while (num>0) {
+            ten *=10;
+            i--;
+        }
+
+    }
+}
