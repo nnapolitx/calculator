@@ -103,11 +103,17 @@ operatorButton.forEach(index => {
             let newOperator = '';
             newOperator = e.target.classList[0];
             const chainAnswer = operate(currentVarA, currentOperator, currentVarB);
-            CalculatorDisplay.textContent = chainAnswer;
+            let answerText = chainAnswer.toString();
+            
+            if (answerText.length>10){
+                CalculatorDisplay.textContent = cutOffRound(chainAnswer);
+            } else {
+                CalculatorDisplay.textContent = chainAnswer;
+            }
+
             currentOperator = newOperator;
             currentVarA = chainAnswer;
             currentVarB = '';
-
             document.querySelector('.percent').disabled = false;
             document.querySelector('.decimal').disabled = false;
         }
