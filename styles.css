@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 5px;
 }
 
 nav {
@@ -73,7 +73,6 @@ button {
 }
 
 button {
-    padding: 15px 25px;
     text-align: center;
     cursor: pointer;
     outline: none;
